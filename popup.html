@@ -3,9 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fraud Detector</title>
+    <title>Fraud Detection</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            width: 300px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .fake {
+            color: #ff4444;
+        }
+        .legit {
+            color: #00cc44;
+        }
+    </style>
 </head>
 <body>
-    <p>Hello, this is fraud detector extension.</p>
+    <h1>Fraud Detection</h1>
+    <p>An extension for detecting fraudulent websites, including phishing attacks.</p>
+    <form id="websiteForm">
+        <input type="text" id="websiteInput" placeholder="Enter a website URL">
+        <button type="submit">Check</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <!-- Add your JavaScript logic here -->
+    <script>
+        document.getElementById("websiteForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const websiteUrl = document.getElementById("websiteInput").value;
+            // Implement your fraud detection logic here (e.g., check against known phishing sites).
+            // For demonstration purposes, let's assume it's fake if the URL contains "phishing".
+            const isFake = websiteUrl.toLowerCase().includes("phishing");
+            const resultElement = document.getElementById("result");
+            if (isFake) {
+                resultElement.textContent = "This website is fake!";
+                resultElement.classList.add("fake");
+            } else {
+                resultElement.textContent = "This website is legit!"; // Updated message
+                resultElement.classList.add("legit");
+            }
+        });
+    </script>
 </body>
 </html>
